@@ -1,0 +1,164 @@
+
+
+.reports-user-login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden; 
+    height: 80vh;
+  }
+
+
+
+.reports-user-login-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+    padding: 10px;
+    background-color: #001C30;
+    background: linear-gradient(to right, #001C30, #176B87);
+    z-index: 1;
+  }
+  
+  .reports-user-login-info {
+    flex-grow: 1;
+  }
+  
+  .reports-user-login {
+    margin: 0;
+    color: #EEEEEE;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+
+  
+  .options {
+    position: relative;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .option-icon {
+    font-size: 24px;
+    color: #EEEEEE; /* Palette color */
+    transition: color 0.3s;
+  }
+  
+  .options:hover {
+    color: #787A91;
+  }
+  
+  .options-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 160px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+    transform: translate(0, -5px);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9999;
+  }
+  
+  .option-title {
+    padding: 10px 20px;
+    color: #0F044C; /* Palette color */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .option-title:hover {
+    background-color: #EEEEEE; /* Palette color */
+  }
+  
+  
+  .options-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .options-dropdown li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .options-dropdown li:hover {
+    background-color: #f4f4f4;
+  }
+
+
+
+
+  /* Styling for the hourly report section */
+  .hourly-report {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-height: 600px;
+    overflow: auto;
+  }
+  
+  /* Styling for the filter section */
+  .filter-section {
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for filter inputs, buttons, and Go button */
+  /* Add your styles for filter inputs, buttons, and Go button here */
+  
+  /* Styling for the daily report section */
+  .daily-report {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-height: 400px;
+    overflow: auto;
+  }
+  
+  /* Styling for tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    max-height: 400px;
+    overflow: auto;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    /* background-color: #001C30; */
+    background: linear-gradient(to right, #001C30, #b5e3f3);
+    color: white;
+  }
+
+  

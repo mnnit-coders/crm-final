@@ -1,0 +1,114 @@
+/* dialer-tasks.css */
+
+.dialer-tasks-page {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+    background-color: #DAFFFB;
+  }
+  
+  .dialer-tasks-filter {
+    flex: 2;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+  }
+  
+  /* Add styling for filter fields and select all button */
+  .dialer-tasks-filter label {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .dialer-tasks-filter select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .dialer-tasks-filter button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .dialer-tasks-list {
+    flex: 8;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Add styling for task details */
+  .dialer-tasks-list .task-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dialer-tasks-list .task-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .dialer-tasks-list .task-item.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
+
+  .filter-section {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  select,
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .filter-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .dialer-task-details {
+    flex: 8;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .task-details {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+  }
+  
+  .task-details h2 {
+    margin-bottom: 10px;
+  }
+  

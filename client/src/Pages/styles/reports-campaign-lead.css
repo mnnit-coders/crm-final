@@ -1,0 +1,202 @@
+
+
+.reports-campaign-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden; 
+    height: 80vh;
+  }
+
+
+  .layout-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    overflow-x: auto;
+  }
+
+
+
+
+.reports-campaign-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+    padding: 10px;
+    background-color: #001C30;
+    background: linear-gradient(to right, #001C30, #176B87);
+    z-index: 1;
+  }
+  
+  .reports-campaign-info {
+    flex-grow: 1;
+  }
+  
+  .reports-campaign-name {
+    margin: 0;
+    color: #EEEEEE;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+
+  
+  .options {
+    position: relative;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .option-icon {
+    font-size: 24px;
+    color: #EEEEEE; /* Palette color */
+    transition: color 0.3s;
+  }
+  
+  .options:hover {
+    color: #787A91;
+  }
+  
+  .options-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 160px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+    transform: translate(0, -5px);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9999;
+  }
+  
+  .option-title {
+    padding: 10px 20px;
+    color: #0F044C; /* Palette color */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .option-title:hover {
+    background-color: #EEEEEE; /* Palette color */
+  }
+  
+  
+  .options-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .options-dropdown li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .options-dropdown li:hover {
+    background-color: #f4f4f4;
+  }
+
+/* Lead Summary Container Styles */
+.lead-summary-container {
+  margin: 20px auto;
+  width: 100%;
+  max-width: 1000px; /* Adjust as needed */
+  padding: 20px;
+  background-color: #f5f5f5; /* Background color for the container */
+  border: 1px solid #ddd; /* Border styles for the container */
+  border-radius: 5px;
+}
+
+.campaign-dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.campaign-dropdown select {
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.campaign-dropdown button {
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.lead-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.lead-summary-item {
+  text-align: center;
+  flex-basis: 24%; /* Adjust to distribute equally */
+  padding: 10px;
+  background-color: #fff; /* Background color for summary items */
+  border: 1px solid #ccc; /* Border styles for summary items */
+  border-radius: 5px;
+}
+
+.lead-summary-item h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.lead-summary-item p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.lead-blocks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.not-connected-leads,
+.connected-leads {
+  flex-basis: 48%; /* Adjust to distribute equally */
+}
+
+.not-connected-leads,
+.connected-leads h4 {
+  text-align: left;
+  font-size: 20px;
+}
+
+.not-connected-stats,
+.connected-stats {
+  background-color: #fff; /* Background color for stats blocks */
+  border: 1px solid #ccc; /* Border styles for stats blocks */
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.not-connected-stats p,
+.connected-stats p {
+  font-size: 18px;
+}
+

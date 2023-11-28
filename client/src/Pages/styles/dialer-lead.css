@@ -1,0 +1,243 @@
+/* Styling for leads container */
+.leads-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 20px;
+    background-color: #DAFFFB;
+}
+
+/* Styling for individual leads box */
+.leads-box {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f5f7fb;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Animation and hover effect for leads box */
+.leads-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Styling for leads box heading */
+.leads-box h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #0F044C;
+}
+
+
+.leads-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .leads-box li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+/* Styling for leads actions */
+.leads-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Styling for view button */
+.view-button,
+.call-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+
+.leads-actions button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .leads-actions button:hover {
+    background-color: #0056b3;
+  }
+
+
+/* Styling for view button */
+.view-button {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+/* Styling for call button */
+.call-button {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+/* Hover effect for buttons */
+.view-button:hover,
+.call-button:hover {
+    background-color: #0056b3;
+}
+
+/* Space between leads actions buttons */
+.leads-actions .call-button {
+    margin-left: 10px;
+}
+
+
+/* Overlapping dialog overlay */
+.overlapping-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  /* Modal content */
+  .modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    max-height: 80vh;
+    overflow: auto;
+    width: 60%;
+  }
+
+  
+.lead-details-table {
+    border-collapse: collapse;
+    width: 80%;
+  }
+  
+  .lead-details-table th, .lead-details-table td {
+    border: 1px solid #ccc; /* Add a thin border to separate columns */
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .lead-details-table th {
+    background-color: #f2f2f2;
+  }
+  
+  
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 80%; */
+   
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 735px;
+    margin-bottom: 10px;
+  }
+  
+  .form-controls select {
+    flex: 3;
+    margin-right: 10px;;
+  }
+
+  .form-controls input {
+    flex: 7; 
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 10px;
+  }
+  
+  .form-controls button:hover {
+    background-color: #0056b3;
+  }
+  
+
+  .send-button {
+    background-color: #5bcb36;
+    color: #fff;
+    flex-direction:row ;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+
+  .start-button {
+    background-color: #3697cb;
+    color: #fff;
+    flex-direction:row ;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+
+
+  .stop-button {
+    background-color: #385db3;
+    color: #fff;
+    flex-direction:row ;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+
+
+  .close-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .close-button:hover {
+    background-color: #a71d2a;
+  }
+  

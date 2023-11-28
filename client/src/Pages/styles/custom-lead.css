@@ -1,0 +1,39 @@
+.custom-lead-form-page {
+    display: flex;
+  }
+  
+  .left-box {
+    flex: 2;
+    padding: 20px;
+  }
+  
+  .drag-option {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  .right-box {
+    flex: 8;
+    padding: 20px;
+  }
+  
+  .form-preview {
+    margin-bottom: 20px;
+  }
+  
+  .form-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+  }
+  
+  .remove-field {
+    cursor: pointer;
+    color: red;
+  }
+  

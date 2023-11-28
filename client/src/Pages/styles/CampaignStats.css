@@ -1,0 +1,224 @@
+.campaign-stats-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px;
+    gap: 30px;
+    height: 77vh;
+    max-height: calc(100vh - 100px); /* Adjust the height as needed */
+    overflow-y: auto;
+  }
+  
+  .campaign-stats-container::-webkit-scrollbar {
+    width: 0; /* Hide scrollbar */
+  }
+
+
+
+  
+  .stats-block {
+    /* flex: 1; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 100%;
+    /* transition: transform 0.3s ease-in-out; */
+    animation: fadeInUp 0.5s ease-in-out;
+  
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .stats-block:last-child {
+    margin-right: 0; /* Remove margin on the last block */
+  }
+
+ 
+  
+  .stats-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .stats-label,
+  .stats-value {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  
+  .lead-stats {
+    flex: 1;
+  }
+  
+  .in-progress {
+    flex: 1;
+  }
+  
+  .closed-leads {
+    flex: 1;
+  }
+
+
+  .chart-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .chart-container {
+    width: 200px;
+    height: 200px;
+    animation: fadeIn 1s ease-in-out;
+  
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+  
+
+
+  .stats-block-horizontal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    margin-top: -8px;
+    width: 315%;
+    gap: 2px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.5s ease-in-out;
+  }
+  
+  .stats-block-horizontal h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .distribution-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+    gap: 10px;
+  }
+  
+  .person-name {
+    width: 100px;
+    font-weight: bold;
+  }
+  
+
+
+  .distribution-chart {
+    display: flex;
+    flex-direction: flex-end;
+    width: 100%; /* Adjust width as needed */
+    height: 20px; /* Adjust height as needed */
+  }
+  
+
+  .category-bar {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .category-bar-item {
+    height: 100%;
+    border-radius: 2px;
+    transition: flex 0.3s ease-in-out;
+    position: relative;
+  }
+  
+  
+.category-label {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  color: #000000;
+}
+
+
+
+/* Header Component Styles */
+.header-camp {
+  position: fixed;
+  top: 105px;
+  left: 255px;
+  width: 81.9%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f2f2f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure the header is on top of other content */
+}
+
+.back-icon {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Add spacing between icon and campaign name */
+}
+
+
+.back-icon a {
+  text-decoration: none;
+  color: #333;
+}
+
+.campaign-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}

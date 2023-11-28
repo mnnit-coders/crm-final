@@ -1,0 +1,403 @@
+.body {
+  /* background-image: url('/img/background.jpg'); */
+  background-color: #EEEEEE;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-container {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0F044C;
+  /* background-color: #76ea62; */
+  padding: 10px 20px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.header-container span {
+  margin-right: auto;
+  padding-right: 10px;
+  border-right: 1px solid #fff;
+}
+
+
+.logout-button {
+  /* Add the desired styles for the logout button */
+  margin-right: 2rem;
+  background-color: #EEEEEE;
+  border: none;
+  padding: 0.5rem 4rem;
+  font-size: 18px;
+  appearance: bold;
+  cursor: pointer;
+}
+
+.Owner-organization-list-container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px; /* Removed justify-content and padding */
+  padding-top: 100px;
+  flex-direction: column;
+  position: relative;
+}
+
+.Owner-organization-card {
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.Owner-organization-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.Owner-organization-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.Owner-organization-card .card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.Owner-organization-card .row {
+  margin-bottom: 10px;
+}
+
+.Owner-organization-card .col-md-8 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Owner-organization-card .col-md-12 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.Owner-organization-card .button-container {
+  display: flex;
+  justify-content:flex-end;
+  align-items: center;
+  margin-top: auto;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.Owner-organization-card .button-container button {
+  margin-left: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Owner-organization-card .card-text {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.Owner-organization-card .card-text:last-child {
+  margin-bottom: 0;
+}
+
+.Owner-organization-card .card-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+
+.Owner-button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.Owner-button-container button {
+  /* flex:1; */
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+}
+
+.Owner-button-container button:last-child {
+  margin-right: 0;
+}
+
+.Owner-button-container button:hover {
+  background-color: #f1f1f1;
+}
+
+.Owner-button-container button.btn-primary {
+  background-color: #30cb6e;
+  color: #fff;
+}
+
+.Owner-button-container button.btn-danger {
+  background-color: #bb2b2b;
+  color: #fff;
+}
+
+.Owner-button-container button.btn-warning {
+  background-color: #395ff6;
+  color: #ffffff;
+}
+
+.add-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #0F044C;
+  color: #38eef1;
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 10;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.add-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.add-form-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  width: 400px;
+}
+
+.add-form-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.add-form-container form {
+  margin-top: 20px;
+}
+
+.add-form-container form .form-group {
+  margin-bottom: 20px;
+}
+
+.add-form-container form label {
+  font-weight: bold;
+}
+
+.add-form-container form input,
+.add-form-container form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.add-form-container form button {
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+.add-form-container form button.btn-primary {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.add-form-container form button.btn-primary:hover {
+  background-color: #218838;
+}
+
+.add-form-container form button.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.add-form-container form button.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.subscription-overlay {
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+.subscription-container {
+  
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  z-index: 5;
+}
+
+.subscription-prompt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.delete-prompt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.subscription-container h2 {
+  /*  desired styles for the heading */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.subscription-container label {
+  /*  desired styles for the labels */
+  font-weight: bold;
+}
+
+
+
+.subscription-button-container {
+  /*  desired styles for the button container */
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.subscription-button-container button {
+  /*  desired styles for the buttons */
+  margin-left: 0.5rem;
+}
+
+
+.Owner-delete-confirmation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  text-align: center;
+  z-index: 999;
+}
+
+.Owner-delete-confirmation h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.Owner-delete-confirmation p {
+  margin-bottom: 1rem;
+}
+
+.Owner-delete-confirmation input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.Owner-delete-confirmation .delete-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.Owner-delete-confirmation .delete-buttons button {
+  margin-left: 0.5rem;
+}

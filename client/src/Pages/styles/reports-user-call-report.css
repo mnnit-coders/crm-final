@@ -1,0 +1,218 @@
+
+
+.reports-user-call-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden; 
+    height: 80vh;
+    width: 102%;
+    margin-left: -10px;
+    margin-right: -50px;
+  }
+
+
+  .layout-container {
+    display: flex;
+    width: 98%;
+    height: 80vh;
+    justify-content: space-between;
+    overflow: hidden;
+
+  }
+
+
+
+
+.reports-user-call-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    padding: 10px;
+    margin-left: -15px;
+    background-color: #001C30;
+    background: linear-gradient(to right, #001C30, #176B87);
+    z-index: 1;
+  }
+  
+  .reports-user-call-info {
+    flex-grow: 1;
+  }
+  
+  .reports-user-call {
+    margin: 0;
+    color: #EEEEEE;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+
+  
+  .options {
+    position: relative;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .option-icon {
+    font-size: 24px;
+    color: #EEEEEE; /* Palette color */
+    transition: color 0.3s;
+  }
+  
+  .options:hover {
+    color: #787A91;
+  }
+  
+  .options-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 160px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+    transform: translate(0, -5px);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9999;
+  }
+  
+  .option-title {
+    padding: 10px 20px;
+    color: #0F044C; /* Palette color */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .option-title:hover {
+    background-color: #EEEEEE; /* Palette color */
+  }
+  
+  
+  .options-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .options-dropdown li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .options-dropdown li:hover {
+    background-color: #f4f4f4;
+  }
+
+
+  .left-block {
+    background-color: #f5f5f5;
+    padding: 20px;
+    width: 30%;
+  }
+  
+  .filter-options {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  /* Style checkboxes and labels */
+  .campaign-type label,
+  .campaign-status label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Style buttons */
+  .buttons button {
+    margin-top: 10px;
+  }
+  
+
+  .right-block {
+    width: 75%;
+    padding: 20px;
+    /* Add your styles for the right block */
+  }
+
+
+/* Styles for the statistics boxes */
+.statistics-boxes {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.statistics-box {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 10px;
+  /* width: calc(33.33% - 20px);  */
+  width: 120px;
+  box-sizing: border-box;
+  text-align: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles for the table container with scrollbar */
+.table-container {
+  max-height: 400px; /* Adjust the maximum height as needed */
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.table-container::-webkit-scrollbar {
+  width: 8px; /* Adjust the scrollbar width */
+}
+
+.table-container::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-color: #cccccc; /* Adjust the thumb color */
+  border-radius: 4px; /* Add rounded corners to the thumb */
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background-color: #999999; /* Adjust the thumb color on hover */
+}
+
+
+/* Styles for the data table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.data-table th,
+.data-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+  background-color: #f2f2f2;
+}
+
+.data-table tbody tr:hover {
+  background-color: #e0e0e0;
+}

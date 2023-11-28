@@ -1,0 +1,198 @@
+.settings-container {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    flex-direction: column;
+    height: 80vh; 
+    overflow: auto;
+  }
+  
+
+  .settings-container::-webkit-scrollbar {
+    width: 0; /* Chrome, Safari, Opera */
+    display: none; /* Hide scrollbar */
+  }
+  .settings-block {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 450px;
+  }
+  
+  .mapping-interface {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .priority-column,
+  .mapping-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .priority-option {
+    background-color: #f7f7f7;
+    border-radius: 20px;
+    padding: 10px;
+    width: 120px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .mapping-option {
+    /* background-color: #f2f2f2; */
+    /* border: 1px solid #ddd; */
+    border-radius: 200px;
+    padding: 10px;
+    width: 250px;
+    cursor: pointer;
+  }
+  
+  .highest {
+    background-color: #ffcccb;
+  }
+  
+  .high {
+    background-color: #ffd700;
+  }
+  
+  .medium {
+    background-color: #add8e6;
+  }
+  
+  .low {
+    background-color: #98fb98;
+  }
+  
+  .draggable-icon {
+    display: inline-block;
+    margin-right: 8px;
+    opacity: 0.6;
+  }
+  
+  /* Add styles for the Not Connected Call Settings block */
+  .not-connected-call-settings {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: -4px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    flex-wrap: wrap; /* Allow settings to wrap into multiple rows */
+    /* gap: 1px; */
+  }
+  .not-connected-call-settings h2 {
+    /* font-size: 18px; */
+    width: 50%;
+    /* margin-bottom: -20px; */
+    /* margin-right: 10px; */
+   
+    
+  }
+  
+  .setting-input {
+    /* margin-bottom: -20px; */
+    width: 100%; 
+    box-sizing: border-box;
+    flex: 1;
+  }
+  
+  .setting-input h3 {
+    font-size: 18px;
+    color: #0C356A;
+    /* margin-bottom: 2px; */
+    /* margin-right: 10px; */
+  }
+  
+  .setting-input label {
+    display: block;
+    /* margin-bottom: 8px; */
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .setting-input input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .setting-input input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+.setting-input input[type="checkbox"]:focus,
+.setting-input input[type="number"]:focus {
+  outline: none;
+  border-color: #5b9bd5;
+}
+
+
+
+
+
+.email-provider-settings {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* margin-top: 20px; */
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .email-provider-settings select {
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    /* margin-right: 10px; */
+  }
+  
+  .custom-email-fields {
+    margin-top: 10px;
+  }
+  
+  .custom-email-fields label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .custom-email-fields input {
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+
+.default-email-fields,
+.custom-email-fields {
+  margin-top: 10px;
+}
+
+.default-email-fields label,
+.custom-email-fields label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.default-email-fields input,
+.custom-email-fields input {
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 10px;
+}
