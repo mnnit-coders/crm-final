@@ -2,12 +2,12 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const Axios = axios.create({
-  baseURL: import.meta.env.VITE_SERVER_URI || "https://nsp-backend.onrender.com/api",
+  baseURL: "https://nsp-backend.onrender.com/api",
   headers: {
     Accept: "application/json",
   },
 });
-
+console.log("Axios",Axios.baseURL);
 Axios.interceptors.request.use(async(config) => {
   const accessToken = sessionStorage.getItem("accessToken");
   config.headers.Authorization = `Bearer ${accessToken}`;
