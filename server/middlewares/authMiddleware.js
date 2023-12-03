@@ -22,6 +22,7 @@ module.exports = {
                     });
                 } else {
                     req.user = decoded;
+
                     // Intermediate Check to see if a non owner is expired before every request
                     // if (req.user.role !== 'owner'){
                     //     const orgID = req.user.orgID;

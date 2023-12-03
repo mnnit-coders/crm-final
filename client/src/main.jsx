@@ -31,14 +31,12 @@ import DialerCampaign from './Pages/DialerCampaign'
 import Settings from './Pages/Settings'
 import CampaignStats from './Pages/CampaignStats'
 import CustomLeadForm from './Pages/CustomLeadForm'
-import Verification from './Pages/Verification'
-import NotFound from './Pages/Notfound'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <div>
     <ToastContainer autoClose={3000} pauseOnHover={false} theme="dark" />
     <BrowserRouter>
       <Routes>
-        <Route path="/verification/:id" element={<Verification/>}/>
         <Route path="testing" element={<Testing/>} />
         <Route path="login" element={<Login />} />
         <Route path="owner" element={<Owner />} />
@@ -83,7 +81,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </Route>
 
         <Route path="/" element={<Home />} />
-        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
   </div>,

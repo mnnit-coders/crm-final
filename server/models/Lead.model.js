@@ -6,10 +6,6 @@ const leadSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
-    name:{
-        type:String,
-        required:true
-    },
     campID:{
         type: String,
         required: true  
@@ -31,13 +27,13 @@ const leadSchema = new mongoose.Schema({
         default: Date.now
     },
     status: {
-        type: String,
-        enum: ["Pending", "Follow-up", "Not-Connected", "Converted", "Lost"],
+        type: ["Pending", "Follow-up", "Not-Connected", "Closed", "Lost"],
         default: "Pending"
     },
     history: {
         type: [mongoose.Schema.Types.ObjectId],
-        ref: "Response"
+        ref: "Response",
+        default: []
     },
     notconnectedcount:{
         type: Number,
@@ -50,12 +46,6 @@ const leadSchema = new mongoose.Schema({
     isResolved: {
         type: Boolean,
         default: false
-    },
-    reason:{
-        type:String
-    },
-    followupdate:{
-        type:Date
     }
 });
 

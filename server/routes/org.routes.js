@@ -9,9 +9,13 @@ const adminRouter = express.Router()
 // Configuring Router
 router.use(authMiddleware.isUserAuthenticated)
 
+// Admin Routes
+adminRouter.use(authMiddleware.isUserAdmin)
+router.get('/getDialers', orgController.getDialers)
+router.use(adminRouter)
+
 // Owner Routes
 router.use(authMiddleware.isUserAdminorOwner)
-router.get('/getDialers', orgController.getDialers)
 router.post("/setSettings", orgController.setOrgSettings)
 
 router.use(authMiddleware.isUserOwner)

@@ -64,7 +64,6 @@ module.exports = {
     uploadLeads: async (req, res, next) => {
         
         try{
-            // console.log(req.body);
             const { campID } = req.body;
             const orgID = req.user.orgID;
             if (!campID) throw createError.BadRequest("Invalid Parameters")

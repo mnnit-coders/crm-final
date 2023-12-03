@@ -32,11 +32,6 @@ const userSchema = new mongoose.Schema({
     verified: {
         type: Boolean,
         default: false
-    },
-    expireAt: { 
-        type: Date, 
-        default: Date.now, 
-        index: { expires: 900 } 
     }
 })
 

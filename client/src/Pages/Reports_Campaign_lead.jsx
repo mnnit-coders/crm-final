@@ -17,21 +17,14 @@ const Reports_Campaign_Lead = () => {
     const [leadSummary, setLeadSummary] = useState({
       open: 0,
       inProgress: 0,
-      converted: 0,
+      closed: 0,
       total: 0,
-      lost:0,
-      notConnected:0,
-      followup:0
     });
     const [leadSummaryDetails, setLeadSummaryDetails] = useState({
       open: 0,
       inProgress: 0,
       closed: 0,
       total: 0,
-      lost:0,
-      notConnected:0,
-      followup:0,
-      converted: 0,
     })
 
     useEffect(()=>{
@@ -47,17 +40,36 @@ const Reports_Campaign_Lead = () => {
           // const stats = [];
           setLeadSummary({
             open: res.statusCounts['Pending'],
-            inProgress :res.statusCounts['Follow-up']+res.statusCounts['Not-Connected'],
-            closed: res.statusCounts['Lost']+res.statusCounts['Converted'],
-            total: res.statusCounts['Pending']+res.statusCounts['Follow-up']+res.statusCounts['Not-Connected']+res.statusCounts['Lost']+res.statusCounts['Converted'],
-            lost:res.statusCounts['Lost'],
-            followup:res.statusCounts['Follow-up'],
-            notConnected:res.statusCounts['Not-Connected'],
-            converted:res.statusCounts['Converted']
+            inProgress :res.statusCounts['Follow-Up']+res.statusCounts['Not-Connected'],
+            closed: res.statusCounts['Lost']+res.statusCounts['Closed'],
+            total: res.statusCounts['Pending']+res.statusCounts['Follow-Up']+res.statusCounts['Not-Connected']+res.statusCounts['Lost']+res.statusCounts['Closed'],
           })
           setLeadSummaryDetails({
 
           })
+          // setInProgressData([
+          //   { name: 'Not Connected', value: res.statusCounts['Follow-Up'] },
+          //   { name: 'Follow-up', value: res.statusCounts['Not-Connected'] },
+          // ])
+          // setClosedLeadsData([
+          //   { name: 'Lost', value: res.statusCounts['Lost'] },
+          //   { name: 'Closed', value: res.statusCounts['Closed'] },
+          // ])
+          // setLeadDistribution(Object.keys(res.assignedCounts).map((idx, person)=>{
+          //   return {
+          //     name: person,
+          //     values: [
+          //       res.assignedCounts[person]['Pending'],
+          //       res.assignedCounts[person]['Follow-Up'],
+          //       res.assignedCounts[person]['Not-Connected'],
+          //       res.assignedCounts[person]['Lost'],
+          //       res.assignedCounts[person]['Closed'],
+          //     ],
+          //     colors: ['#FF6384', '#36A2EB', '#FFCE00','#ABCDEF','#FEDCBA'],
+          //     labels: ['Pending', 'Follow-Up','Not-Connected','Lost','Closed'],
+          //     markings: [50, 80],
+          //   }
+          // }))
         })
         .catch((err) => {
           console.log("Got Error")
@@ -162,7 +174,7 @@ const Reports_Campaign_Lead = () => {
           </div>
           <div className="lead-summary-item">
             <h3>Closed</h3>
-            <p>{leadSummary.converted}</p>
+            <p>{leadSummary.closed}</p>
           </div>
           <div className="lead-summary-item">
             <h3>Total</h3>
@@ -173,16 +185,16 @@ const Reports_Campaign_Lead = () => {
           <div className="not-connected-leads">
             <h4>Not Connected</h4>
             <div className="not-connected-stats">
-              <p>Lost: {leadSummary.lost}</p>
-              <p>Pending: {leadSummary.open}</p>
+              <p>Lost: X</p>
+              <p>Pending: Y</p>
             </div>
           </div>
           <div className="connected-leads">
-            <h4>Connected Leads</h4>
+            <h4>Yes, Connected Leads</h4>
             <div className="connected-stats">
-              <p>Follow-Up: {leadSummary.followup}</p>
-              <p>Converted: {leadSummary.converted}</p>
-              <p>Lost: {leadSummary.lost}</p>
+              <p>Follow-Up: A</p>
+              <p>Converted: B</p>
+              <p>Lost: C</p>
             </div>
           </div>
         </div>

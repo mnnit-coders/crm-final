@@ -11,7 +11,7 @@ export const ownerRegister = async (owner) => {
     }
 
     return await Axios.post('/auth/ownerRegister',ownerPayload).then(res=>{
-        toast.success("Verification link has sent on e-mail address")
+        toast.success("Owner Registered")
         return true
     }).catch(err=>{
         toast.error(err.response.data.error.message)
@@ -32,7 +32,7 @@ export const userRegister = async (user) => {
         }
 
         return await Axios.post('/auth/register',UserPayload).then(res=>{
-            toast.success("Verification link has sent on e-mail address")
+            toast.success("User Registered")
             return true
         }).catch(err=>{
             toast.error(err.response.data.error.message)
@@ -74,16 +74,4 @@ export const logOut = async () => {
         toast.error("Loging Out Failed")
         return false
     })
-}
-
-export const verifyUser=async (token)=>{
-    try {
-        const response = await Axios.post('/auth/verifyUser',{token});
-        toast.success(response.data.message);
-        return true;
-    } catch (error) {
-        console.log(error.response.data.error.message)
-        toast.error(error.response.data.error.message)
-        return false;
-    }
 }

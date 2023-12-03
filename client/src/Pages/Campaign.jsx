@@ -3,14 +3,31 @@ import { Link } from 'react-router-dom';
 import AdminLayout from "../Components/AdminLayout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV, faInfoCircle, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+
 import { createCampaign, deleteCampaign, getCampaigns } from "../Utils/Requests/campaign.requests"
+
+
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './styles/admin.css';
 import { getDialers } from "../Utils/Requests/org.requests";
 
+// const FaEllipsisH = () => {
+//     return <div></div>
+// }
 
 const Campaign = () => {
-  const [campaigns, setCampaigns] = useState([]);
+  const [campaigns, setCampaigns] = useState([
+    // { id: 1, title: 'Campaign 1', category: 'Sales' },
+    // { id: 6, title: 'Campaign 6', category: 'Sales' },
+    // { id: 7, title: 'Campaign 7', category: 'Sales' },
+    // { id: 8, title: 'Campaign 8', category: 'Sales' },
+    // { id: 2, title: 'Campaign 2', category: 'Support' },
+    // { id: 3, title: 'Campaign 3', category: 'Reminder' },
+    // { id: 4, title: 'Campaign 4', category: 'Feedback' },
+    // { id: 5, title: 'Campaign 5', category: 'Other' },
+    // { id: 9, title: 'Campaign 101', category: 'New Category'}
+  ]);
+
   useEffect(() => {
     const campaigns = getCampaigns().then(res => {
       if(res) setCampaigns(res);
@@ -37,11 +54,11 @@ const Campaign = () => {
   const [dropdownLeft, setDropdownLeft] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [selectMembers, setselectMembers] = useState([]);
+
 
   const [newCampaignData, setNewCampaignData] = useState({
     name: '',
-    members: [],
+    members: '',
     category: '',
     priority: ''
   });
@@ -50,12 +67,13 @@ const Campaign = () => {
 
   const handleAddCampaign = (e) => {
     e.preventDefault();
+  
+    // Create a new campaign object with the entered data
     const newCampaign = {
-      id:campaigns.length+1,
-      ...newCampaignData,
-      members:selectMembers
+      id: campaigns.length + 1, // Replace with appropriate logic to generate a unique ID
+      ...newCampaignData
     };
-    console.log(newCampaign)
+
     createCampaign(newCampaign).then(res =>{
       console.log("Created:", res)
       setCampaigns([...campaigns, {
@@ -71,7 +89,7 @@ const Campaign = () => {
     // Clear the form input values
     setNewCampaignData({
       name: '',
-      members: [],
+      members: '',
       category: '',
       priority: ''
     });
@@ -175,22 +193,6 @@ const Campaign = () => {
     campaign.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleCheckboxChange = (email) => {
-    // Create a copy of the selectedCheckboxes array
-    const updatedSelectedCheckboxes = [...selectMembers];
-    
-    if (updatedSelectedCheckboxes.includes(email)) {
-      // If the email is already in the array, remove it (uncheck)
-      updatedSelectedCheckboxes.splice(updatedSelectedCheckboxes.indexOf(email), 1);
-    } else {
-      // If the email is not in the array, add it (check)
-      updatedSelectedCheckboxes.push(email);
-    }
-
-    // Update the state with the new selected checkboxes array
-    setselectMembers(updatedSelectedCheckboxes);
-  };
-
   return (
     <div className="campaign-page">
       <h2>Campaign Page</h2>
@@ -287,17 +289,25 @@ const Campaign = () => {
               value={newCampaignData.name}
               onChange={(e) => setNewCampaignData({ ...newCampaignData, name: e.target.value })}
             />
+
             <label>Members:</label>
             <ul>
               {
                 allMembers.map((user, index)=>{
                   return <div key={index}>
-                    <input key={index} type="checkbox" value={user.email} checked={selectMembers.includes(user.email)} onChange={() => handleCheckboxChange(user.email)}/>
+                    <input key={index} type="checkbox" value={user.email} />
                     <span>{user.name}</span>
                   </div>
                 })
               }
             </ul>
+            {/* <input
+              type="text"
+              name="members"
+              value={newCampaignData.members}
+              onChange={(e) => setNewCampaignData({ ...newCampaignData, members: e.target.value })}
+            /> */}
+
             <label>Category:</label>
             <input
               type="text"
@@ -323,6 +333,11 @@ const Campaign = () => {
       </div>
     )}
   
+
+
+
+  
+        
     </div>
   );
 };

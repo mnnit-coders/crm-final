@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import Axios from "../axiosService"
-import { DateTime } from 'luxon'
+
 export const uploadLeadsFile = async (formData) => {
     
     await Axios.post('/lead/uploadLeads', formData, {
@@ -20,27 +20,11 @@ export const uploadLeadsFile = async (formData) => {
 export const getLeads = async() => {
     const response = await Axios
         .get('/dialer/getLeads')
-        .then(res=>{
-            if(res.data.leads['Not-Connected']){
-                res.data.leads['Not-Connected'].map((data)=>(
-                    data.tryTime=convertTime(data.tryTime)
-                ))
-            }
-            if(res.data.leads['Follow-up']){
-                res.data.leads['Follow-up'].map((data)=>(
-                    data.followupdate=convertTime(data.followupdate)
-                ))
-            }
-            return res.data;
-        })
+        .then(res=>res.data)
         .catch(err=>{
             toast.error(err.response.data.error.message);
             return []
         })
-    console.log("getLeads :", response)
+    console.log("getCampaigns :", response)
     return response
-}
-function convertTime(data) {
-    let date = DateTime.fromISO(data, { zone: 'Asia/Kolkata' }).toLocaleString(DateTime.DATETIME_MED);
-    return date;
 }
