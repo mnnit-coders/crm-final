@@ -7,7 +7,7 @@ const Axios = axios.create({
     Accept: "application/json",
   },
 });
-
+console.log("Axios",Axios.baseURL );
 Axios.interceptors.request.use(async(config) => {
   const accessToken = sessionStorage.getItem("accessToken");
   config.headers.Authorization = `Bearer ${accessToken}`;
