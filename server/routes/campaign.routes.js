@@ -13,6 +13,8 @@ router.post('/create', campaignController.createCampaign);
 router.delete('/remove/:campID', campaignController.removeCampaign);
 router.put('/update', campaignController.updateCampaign);
 
+router.get('/campaigndetails/:campID',campaignController.getCampaignByID);
+
 
 // Exporting Router
 module.exports = router;

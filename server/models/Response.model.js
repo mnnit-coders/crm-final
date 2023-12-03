@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const responseSchema = new mongoose.Schema({
+    leadid:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Lead'
+    },
     body: {
         type: String,
         required: true
@@ -9,14 +13,14 @@ const responseSchema = new mongoose.Schema({
         type: String,
         required:true,
     },
-    callTime:{
+    startTime:{
         type: Date,
     },
-    callFrom:{
+    endTime:{
         type: Date,
     },
-    callTill:{
-        type:Date
+    duration:{
+        type:Number
     },
     respondedBy: {
         type: mongoose.Schema.Types.ObjectId,
@@ -26,6 +30,14 @@ const responseSchema = new mongoose.Schema({
     respondedAt: {
         type: Date,
         default: Date.now
+    },
+    orgID:{
+        type:String,
+        required:true
+    },
+    campID:{
+        type:String,
+        required:true
     }
 });
 

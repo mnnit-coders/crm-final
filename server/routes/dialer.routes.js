@@ -15,6 +15,7 @@ router.use(AuthMiddleware.isUserDialer)
 
 // Configuring routes
 router.get('/getLeads', dialerController.getLeads);
+router.post('/getcallrecord',dialerController.getCallRecord)
 
 // Exporting Router
 module.exports = router;

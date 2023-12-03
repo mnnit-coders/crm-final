@@ -26,7 +26,20 @@ export const getCampaignMembers = async(campID) => {
         return []
     })
 }
+export const getCampaignByCategory=async()=>{
+    const response = await Axios
+        .get('/campaign/list')
+        .then(res=>res.data)
+        .catch(err=>{
+            toast.error(err.response.data.error.message);
+            return []
+        })
+        let campaignCategory= response.map(campaign=>{
+            return campaign.category
+        })
+        return Array.from(new Set(campaignCategory.map(category=>category)))
 
+}
 export const getCampaignsList = async() => {
     const response = await Axios
         .get('/campaign/list')
@@ -39,7 +52,8 @@ export const getCampaignsList = async() => {
     return response.map(campaign => {
         return {
             campID: campaign.campID,
-            name: campaign.name
+            name: campaign.name,
+            category:campaign.category
         }   
     })
 }
@@ -67,8 +81,18 @@ export const deleteCampaign = async(campID) => {
 export const updateCampaign = async(settingsPayload) => {
     await Axios.put('/campaign/update/', settingsPayload)
     .then(res=>{
-        toast("Settings have been applied")
+        toast.success("Campaign Settings have been applied")
     }).catch(err=>{
         toast.error(err.response.data.error.message)
     })
+}
+
+export const getCampaignByID=async(campID)=>{
+    const response=await Axios.get(`campaign/campaigndetails/${campID}`)
+    .then(res=>res.data.data)
+    .catch(err=>{
+        toast.error(err.response.data.error.message)
+        return [];
+    })
+    return response;
 }

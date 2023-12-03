@@ -1,4 +1,5 @@
 import Axios from '../axiosService'
+import { toast } from 'react-toastify'
 
 export const sendResponse = async (data) => {        
     try{
@@ -9,12 +10,15 @@ export const sendResponse = async (data) => {
             startTime: data.startTime,
             endTime: data.endTime,
         }
+        toast("Sending Response")
         if (data.notConnectedReason) responsePayload.notConnectedReason = data.notConnectedReason
-        const response = await Axios.post('/responses/create', responsePayload)
-        .then(res=>toast(res))
-        .catch(err=>toast(err.response.data.error.message))
+        const response = await Axios.post('/responses/create', data)
+        .then(res=>{toast.success(res.data.message); return true})
+        .catch(err=>{toast.error(err.response.data.error.message); return false})
+        return response
     } catch(err){
         toast("Response Failed, Re-Send")
         console.log(err)
+        return false
     }
 }

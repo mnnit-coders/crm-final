@@ -35,6 +35,7 @@ module.exports = {
                 return {
                     name: member.firstName+" "+member.lastName,
                     email: member.email,
+                    _id:member._id
                 }
             })
             res.status(200).json(dialers)

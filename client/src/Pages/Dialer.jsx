@@ -84,39 +84,39 @@ const Dialer = () => {
       </div>
 
       <div className="dialer-boxes">
-      <div className="dialer-box">
-        <a href="/dialer/tasks">
-          <div className="box-icon">
-            <i className="fas fa-bullhorn"></i>
-          </div>
-          <h2>Campaigns</h2>
-        </a>
+        <div className="dialer-box">
+          <a href="/dialer/tasks">
+            <div className="box-icon">
+              <i className="fas fa-bullhorn"></i>
+            </div>
+            <h2>Campaigns</h2>
+          </a>
+        </div>
+        <div className="dialer-box">
+          <a href="/dialer/leads">
+            <div className="box-icon">
+              <i className="fas fa-user"></i>
+            </div>
+            <h2>Leads</h2>
+          </a>
+        </div>
+        <div className="dialer-box">
+          <a href="/dialer/reports">
+            <div className="box-icon">
+              <i className="fas fa-chart-bar"></i>
+            </div>
+            <h2>Reports</h2>
+          </a>
+        </div>
+        <div className="dialer-box">
+          <a href="/dialer/tasks">
+            <div className="box-icon">
+              <i className="fas fa-tasks"></i>
+            </div>
+            <h2>Tasks</h2>
+          </a>
+        </div>
       </div>
-      <div className="dialer-box">
-        <a href="/dialer/leads">
-          <div className="box-icon">
-            <i className="fas fa-user"></i>
-          </div>
-          <h2>Leads</h2>
-        </a>
-      </div>
-      <div className="dialer-box">
-        <a href="/dialer/reports">
-          <div className="box-icon">
-            <i className="fas fa-chart-bar"></i>
-          </div>
-          <h2>Reports</h2>
-        </a>
-      </div>
-      <div className="dialer-box">
-        <a href="/dialer/tasks">
-          <div className="box-icon">
-            <i className="fas fa-tasks"></i>
-          </div>
-          <h2>Tasks</h2>
-        </a>
-      </div>
-    </div>
 
 
 

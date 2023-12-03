@@ -4,11 +4,43 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons';
 import AdminLayout from '../Components/AdminLayout.jsx';
 import './styles/Settings.css'; // Import your CSS file for styling
-import {toast} from 'react-toastify';
-
-import { updateCampaign } from '../Utils/Requests/campaign.requests.js';
-
+import { toast } from 'react-toastify';
+import { getDialers } from '../Utils/Requests/org.requests.js';
+import { updateCampaign,getCampaignByID } from '../Utils/Requests/campaign.requests.js';
+import { useParams } from 'react-router-dom';
 const Settings = () => {
+  const {id}=useParams();
+  const [name, setName] = useState('');
+  const [category, setCategory] = useState('');
+  const [members, setMembers] = useState([]);
+  const [selectMembers, setselectMembers] = useState([]);
+
+  const handleCheckboxChange = (email) => {
+    const updatedSelectedCheckboxes = [...selectMembers];
+    if (updatedSelectedCheckboxes.includes(email)) {
+      updatedSelectedCheckboxes.splice(updatedSelectedCheckboxes.indexOf(email), 1);
+    } else {
+      updatedSelectedCheckboxes.push(email);
+    }
+    setselectMembers(updatedSelectedCheckboxes);
+  };
+
+
+
+  useEffect(() => {
+    getDialers().then(res => {
+      setMembers(res)
+    })
+    getCampaignByID(id).then(res=>{
+      console.log(res)
+      setName(res.name)
+      setselectMembers(res.members)
+      setCategory(res.category)
+      setSettings(res.settings.NotConnected)
+    })
+  }, []);
+
+
   const [mappingOptions, setMappingOptions] = useState([
     { label: 'Manually Assigned Leads', priority: 'highest' },
     { label: 'Leads Assigned to User', priority: 'high', draggable: true },
@@ -26,8 +58,8 @@ const Settings = () => {
       option.label === optionLabel
         ? { ...option, priority: targetPriority }
         : option.priority === targetPriority
-        ? { ...option, priority: optionToMove.priority }
-        : option
+          ? { ...option, priority: optionToMove.priority }
+          : option
     );
     setMappingOptions(updatedMapping);
   };
@@ -46,12 +78,12 @@ const Settings = () => {
           onDragStart={(e) => handleDrag(e, option.label)}
           draggable={option.draggable}
         >
-        {option.draggable && (
+          {option.draggable && (
             <div className="draggable-icon">
               <FontAwesomeIcon icon={faArrowsAlt} />
             </div>
           )}
-             {option.label}
+          {option.label}
         </div>
       ));
   };
@@ -60,57 +92,54 @@ const Settings = () => {
 
 
 
-  
-    const [settings, setSettings] = useState({
-      "Not-picked": {
-        retryEnabled: true,
-        retryAfter: [5, 'minute'],
-        maxTries: 3
-      },
-      "Busy": {
-        retryEnabled: true,
-        retryAfter: [5, 'minute'],
-        maxTries: 3
-      },
-      
-      "User-Disconnected": {
-        "retryEnabled": true,
-        "retryAfter": [ 5, 'minute'],
-        "maxTries": 3
-      }, 
-      "Switch-off": {
-        "retryEnabled": true,
-        "retryAfter": [ 5, 'minute'],
-        "maxTries": 3
-      }, 
-    "Out-of-coverage-area":{
-        "retryEnabled": true,
-        "retryAfter": [ 5, 'minute'],
-        "maxTries": 3                    
-    }, 
-    "Incorrect-number":{
-        "retryEnabled": true,
-        "retryAfter": [ 5, 'minute'],
-        "maxTries": 3
-    }, 
-    "Incoming-not-available":{
-        "retryEnabled": true,
-        "retryAfter": [ 5, 'minute'],
-        "maxTries": 3
-    }, 
-    "Out-of-service":{
-        "retryEnabled": true,
-        "retryAfter": [ 5, 'minute'],
-        "maxTries": 3
+
+  const [settings, setSettings] = useState({
+    "Not-picked": {
+      retryEnabled: true,
+      retryAfter: [5, 'minute'],
+      maxTries: 3
+    },
+    "Busy": {
+      retryEnabled: true,
+      retryAfter: [5, 'minute'],
+      maxTries: 3
+    },
+
+    "User-Disconnected": {
+      "retryEnabled": true,
+      "retryAfter": [5, 'minute'],
+      "maxTries": 3
+    },
+    "Switch-off": {
+      "retryEnabled": true,
+      "retryAfter": [5, 'minute'],
+      "maxTries": 3
+    },
+    "Out-of-coverage-area": {
+      "retryEnabled": true,
+      "retryAfter": [5, 'minute'],
+      "maxTries": 3
+    },
+    "Incorrect-number": {
+      "retryEnabled": true,
+      "retryAfter": [5, 'minute'],
+      "maxTries": 3
+    },
+    "Incoming-not-available": {
+      "retryEnabled": true,
+      "retryAfter": [5, 'minute'],
+      "maxTries": 3
+    },
+    "Out-of-service": {
+      "retryEnabled": true,
+      "retryAfter": [5, 'minute'],
+      "maxTries": 3
     }
-      // ... (repeat for other scenarios)
-    });
+    // ... (repeat for other scenarios)
+  });
 
 
   const handleSettingChange = (scenario, key, value) => {
-    
-
-
     setSettings((prevSettings) => ({
       ...prevSettings,
       [scenario]: {
@@ -123,11 +152,20 @@ const Settings = () => {
 
 
 
-    // Function to handle the submit button click
-    const handleSubmit = () => {
-      console.log(settings);
-      toast.success('Settings have been applied.'); // Display an alert or perform any other desired action.
-    };
+  // Function to handle the submit button click
+  const handleSubmit = () => {
+    // var newmember=members.map((data)=>{
+    //   return data.email
+    // })
+    const updatedCampaign={
+      campID:id,
+      name:name,
+      members:selectMembers,
+      category:category,
+      newSettings:settings
+    }
+    updateCampaign(updatedCampaign)
+  };
 
 
 
@@ -150,34 +188,38 @@ const Settings = () => {
         <label>
           Retry After:
           <select
-          value={options.retryAfter[0]}
-          onChange={(e) =>
-            handleSettingChange(scenario, 'retryAfter', [
-              parseInt(e.target.value),
-              options.retryAfter[1]
-            ])
-          }
-        >
-          <option value={5}>5 minutes</option>
-          <option value={10}>10 minutes</option>
-          <option value={15}>15 minutes</option>
-          <option value={1}>1 hour</option>
-          <option value={6}>6 hours</option>
-          <option value={24}>24 hours</option>
-          <option value={1 * 24 * 60}>1 day</option>
-          <option value={7 * 24 * 60}>7 days</option>
-        </select>
+            value={options.retryAfter[0]}
+            onChange={(e) =>
+              handleSettingChange(scenario, 'retryAfter', [
+                parseInt(e.target.value),
+                'minute'
+              ])
+            }
+          >
+            <option value={5}>5 minutes</option>
+            <option value={10}>10 minutes</option>
+            <option value={15}>15 minutes</option>
+            <option value={60}>1 hour</option>
+            <option value={6*60}>6 hours</option>
+            <option value={1 * 24 * 60}>1 day</option>
+            <option value={2 * 24 * 60}>2 day</option>
+            <option value={3 * 24 * 60}>3 day</option>
+            <option value={4 * 24 * 60}>4 day</option>
+            <option value={5 * 24 * 60}>5 day</option>
+            <option value={6 * 24 * 60}>6 day</option>
+            <option value={7 * 24 * 60}>7 days</option>
+          </select>
         </label>
 
         <label>
-            Max Tries:
-            <input
-                type="number"
-                value={options.maxTries}
-                onChange={(e) =>
-                handleSettingChange(scenario, 'maxTries', parseInt(e.target.value))
-                }
-            />
+          Max Tries:
+          <input
+            type="number"
+            value={options.maxTries}
+            onChange={(e) =>
+              handleSettingChange(scenario, 'maxTries', parseInt(e.target.value))
+            }
+          />
         </label>
 
         {/* You can add similar inputs for other properties */}
@@ -220,10 +262,40 @@ const Settings = () => {
 
 
   return (
+
+
     <div className="settings-container">
-    <h2>Set Priority to Leads</h2>
+      <h2>Name, Member, and Category Settings</h2>
+      <div className="name-member-category-settings">
+        <div className="name-setting">
+          <label>Name:</label>
+          <input type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} />
+        </div>
+        <div className="member-setting">
+          <label>Select Members:</label>
+          {members.length==0?<><h6>No Members</h6></>:<ul>
+            {
+              members.map((user, index) => {
+                return <div key={index}>
+                  <input key={index} type="checkbox" value={user.email} checked={selectMembers.includes(user.email)} onChange={() => handleCheckboxChange(user.email)} />
+                  <span>{user.name}</span>
+                </div>
+              })
+            }
+          </ul>}
+          
+        </div>
+        <div className="category-setting">
+          <label>Category:</label>
+          <input type="text" placeholder="Enter category" value={category} onChange={(e) => setCategory(e.target.value)} />
+        </div>
+      </div>
+
+
+
+      <h2>Set Priority to Leads</h2>
       <div className="settings-block">
-        
+
         <div className="mapping-interface">
           <div className="priority-column">
             <div className="priority-option highest">Highest</div>
@@ -265,10 +337,9 @@ const Settings = () => {
       </div>
 
 
-      <h2>Not Connected Call Settings</h2> 
-      <div className="not-connected-call-settings">            
+      <h2>Not Connected Call Settings</h2>
+      <div className="not-connected-call-settings">
         {renderSettingInputs()}
-        {/* The rest of your Not Connected Call Settings JSX */}
       </div>
 
 
@@ -306,7 +377,7 @@ const Settings = () => {
       >
         SUBMIT
       </button>
-    
+
 
 
 
@@ -314,7 +385,7 @@ const Settings = () => {
   );
 };
 
-export default function() {
+export default function () {
   return (
     <AdminLayout>
       <Settings />

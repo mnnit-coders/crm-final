@@ -125,13 +125,13 @@
     max-width: 100%;
     max-height: 80vh;
     overflow: auto;
-    width: 60%;
+    width: 90%;
   }
 
   
 .lead-details-table {
     border-collapse: collapse;
-    width: 80%;
+    width: 100%;
   }
   
   .lead-details-table th, .lead-details-table td {

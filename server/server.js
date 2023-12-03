@@ -9,6 +9,7 @@ connectDB();
 // Middlewares
 app.use(require('cors')())
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 app.use(require('morgan')('dev'))
 app.use(require('cookie-parser')())
 
@@ -22,6 +23,7 @@ app.use(async(req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
+    // console.log(err)
     res.status(err.status || 500)
     res.send({
         error: {

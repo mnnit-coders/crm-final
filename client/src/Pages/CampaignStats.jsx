@@ -71,9 +71,9 @@ const DonutChart = ({ data }) => {
 
 const LeadDistributionBlock = ({ name, values, colors, labels }) => (
   <div className="distribution-entry">
-    <div className="person-name">{name}</div>
+    <div className="person-name" style={{width:'20%'}}>{name}</div>
     <div className="distribution-chart">
-      <div className="category-bar">
+      <div className="category-bar" style={{width:'100%'}}>
         {values && colors && labels && values.map((value, valueIndex) => (
           <div
             key={valueIndex}
@@ -83,7 +83,7 @@ const LeadDistributionBlock = ({ name, values, colors, labels }) => (
               backgroundColor: colors[valueIndex],
             }}
           >
-            <span className="category-label">{labels[valueIndex]}</span>
+            {value>0&&<span className="category-label" >{labels[valueIndex]}{value}%</span>}
           </div>
         ))}
       </div>
@@ -117,35 +117,60 @@ const CampaignStats = () => {
     getCampaignStatistics(id)
       .then((res) => {
         // const stats = [];
-        console.log(res, res.statusCounts)
+        console.log('hello',res, res.statusCounts)
         setLeadStatsData([
           {name:'Open', value:res.statusCounts['Pending']},
-          {name:'In Progress', value:res.statusCounts['Follow-Up']+res.statusCounts['Not-Connected']},
-          {name:'Closed', value:res.statusCounts['Lost']+res.statusCounts['Closed']}
+          {name:'In Progress', value:res.statusCounts['Follow-up']+res.statusCounts['Not-Connected']},
+          {name:'Closed', value:res.statusCounts['Lost']+res.statusCounts['Converted']}
         ])
         setInProgressData([
-          { name: 'Not Connected', value: res.statusCounts['Follow-Up'] },
-          { name: 'Follow-up', value: res.statusCounts['Not-Connected'] },
+          { name: 'Follow-up', value: res.statusCounts['Follow-up'] },
+          { name: 'Not Connected', value: res.statusCounts['Not-Connected'] },
         ])
         setClosedLeadsData([
           { name: 'Lost', value: res.statusCounts['Lost'] },
-          { name: 'Closed', value: res.statusCounts['Closed'] },
+          { name: 'Converted', value: res.statusCounts['Converted'] },
         ])
-        setLeadDistribution(Object.keys(res.assignedCounts).map((idx, person)=>{
+        // res.assignedStatusCounts=Object.values(res.assignedStatusCounts)
+        console.log(res.assignedStatusCounts);
+        // setLeadDistribution(Object.keys(res.assignedStatusCounts).map((person, index)=>{
+        //   console.log(person)
+        //   return {
+        //     name: person,
+        //     values: [
+        //       res.assignedCounts[person]['Pending'],
+        //       res.assignedCounts[person]['Follow-up'],
+        //       res.assignedCounts[person]['Not-Connected'],
+        //       res.assignedCounts[person]['Lost'],
+        //       res.assignedCounts[person]['Converted'],
+        //     ],
+        //     colors: ['#FF6384', '#36A2EB', '#FFCE00','#ABCDEF','#FEDCBA'],
+        //     labels: ['Pending', 'Follow-up','Not-Connected','Lost','Converted'],
+        //     markings: [50, 80],
+        //   }
+        // }))
+        const arrayOfObjects = Object.keys(res.assignedStatusCounts).map((person, index) => {
+          const personStatusCounts = res.assignedStatusCounts[person];
+          const totalSum = Object.values(personStatusCounts).reduce((acc, value) => acc + value, 0);
           return {
             name: person,
             values: [
-              res.assignedCounts[person]['Pending'],
-              res.assignedCounts[person]['Follow-Up'],
-              res.assignedCounts[person]['Not-Connected'],
-              res.assignedCounts[person]['Lost'],
-              res.assignedCounts[person]['Closed'],
+              parseFloat(((personStatusCounts['Pending']/totalSum)*100).toFixed(2)) || 0,
+              parseFloat(((personStatusCounts['Follow-up']/totalSum)*100).toFixed(2)) || 0,
+              parseFloat(((personStatusCounts['Not-Connected']/totalSum)*100).toFixed(2)) || 0,
+              parseFloat(((personStatusCounts['Lost']/totalSum)*100).toFixed(2)) || 0,
+              parseFloat(((personStatusCounts['Converted']/totalSum)*100).toFixed(2)) || 0
             ],
-            colors: ['#FF6384', '#36A2EB', '#FFCE00','#ABCDEF','#FEDCBA'],
-            labels: ['Pending', 'Follow-Up','Not-Connected','Lost','Closed'],
+            colors: ['#FF6384', '#36A2EB', '#FFCE00', '#ABCDEF', '#FEDCBA'],
+            labels: ['Pending', 'Follow-up', 'Not-Connected', 'Lost', 'Converted'],
             markings: [50, 80],
-          }
-        }))
+          };
+        });
+        
+        // Now arrayOfObjects contains the mapped array
+        // console.log(arrayOfObjects);
+        setLeadDistribution(arrayOfObjects)
+        // console.log(leadDistribution);
       })
       .catch((err) => {
         console.log("Got Error")
@@ -156,9 +181,9 @@ const CampaignStats = () => {
   const leadDistributionData = [
     {
       name: 'Person 1',
-      values: [40, 30, 30], // Open: 40%, Follow-up: 30%, Not Connected: 20%
-      colors: ['#FF6384', '#36A2EB', '#FFCE00'],
-      labels: ["Open", "Follow-up", "Not Connected"], // Labels for each category
+      values: [40, 30, 10,10,10], // Open: 40%, Follow-up: 30%, Not Connected: 20%
+      colors: ['#FF6384', '#36A2EB', '#FFCE00', '#ABCDEF', '#FEDCBA'],
+      labels: ['Pending', 'Follow-up', 'Not-Connected', 'Lost', 'Converted'], // Labels for each category
       markings: [50, 80],
     },
 
@@ -184,10 +209,10 @@ const CampaignStats = () => {
         </div>
         <div className="campaign-name"> Campaign Name {id}</div>
         <Link to={`/admin/campaigns/edit/${id}`} className="edit-button">Edit Campaign</Link>
+        {/* <Link to={`/admin/campaigns/edit/${id}`} className="edit-button">Edit Campaign</Link> */}
       </div>
 
 
-      {/* Lead Stats Block */}
       <div className="stats-block lead-stats">
         <h2 style={{ fontSize: '16px' }}>LEADS STATISTICS</h2>
         <div className="stats-row">

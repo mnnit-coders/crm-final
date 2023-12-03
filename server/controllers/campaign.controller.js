@@ -5,8 +5,7 @@ const createError = require('http-errors')
 
 const { settings } = require("./response.controller.js")
 
-const { generateRandomId, deepUpdate } = require('../utils/Helpers.js')
-
+const { generateRandomId, deepUpdate } = require('../utils/Helpers.js');
 module.exports = {
 
     createCampaign: async (req, res, next) => {
@@ -79,6 +78,7 @@ module.exports = {
             if (!doesExists) throw createError.NotFound(`Campaign with this id ${campID} does not exists`)
 
             const campaign = await Campaign.deleteOne({ orgID:orgID, campID: campID })
+            await Lead.deleteMany({orgID,campID})
             res.status(200).json({message:"Campaign deleted successfully"})
         } catch (err) { 
             next(err)
@@ -150,16 +150,18 @@ module.exports = {
         try{
             
             const orgID = req.user.orgID
-            const { campID, name, priority, members, newSettings } = req.body
+            const { campID, name, priority, members, newSettings,category } = req.body
+            console.log(members)
 
             if (!campID) throw createError.BadRequest('Campaign ID is required')
+            if(!name ||!members||!newSettings||!category) createError.BadRequest('All fields required')
 
             const doesExists = await Campaign.exists({ orgID:orgID, campID: campID })
             if (!doesExists) throw createError.NotFound(`Campaign with this id ${campID} does not exists`)
 
             const campaign = await Campaign.findOne({ orgID:orgID, campID: campID })
 
-            if (req.user.role!='admin' && !campaign.members.includes(req.user.userID)) throw createError.Forbidden('You are not authorized to update this campaign')
+            if (req.user.role!='admin' && campaign.orgID!=orgID) throw createError.Forbidden('You are not authorized to update this campaign')
 
             if (name) campaign.name = name
             if (priority) campaign.priority = priority
@@ -168,12 +170,13 @@ module.exports = {
                 campaign.markModified('members')
             }
             if (newSettings){
-                console.log("Old Settings :",campaign.settings)
+                // console.log("Old Settings :",campaign.settings)
                 console.log("New Settings :",newSettings)
-                deepUpdate(campaign.settings, newSettings)
-                campaign.markModified('settings')
+                // deepUpdate(campaign.settings, newSettings)
+                // campaign.markModified('settings')
+                campaign.settings={'NotConnected':newSettings};
             }
-
+            campaign.category=category;
             await campaign.save()
 
             const campaignPayload = {
@@ -191,6 +194,23 @@ module.exports = {
         } catch (err) { 
             next(err)
         }
-    }
+    },
+    getCampaignByID:async(req,res,next)=>{
+        try {
+            const orgID = req.user.orgID;
+            const {campID}=req.params;
+            if(!campID) throw createError.BadRequest('Campaign Id is required');
+            const doesExist=await Campaign.findOne({campID});
+            if(!doesExist) throw createError.NotFound(`Campaign with this id ${campID} does not exists`)
+            const campaign = await Campaign.findOne({ orgID:orgID, campID: campID })
 
+            if (campaign.orgID!=orgID) throw createError.Forbidden('You are not authorized to see this Campaign')
+            return res.status(200).json({
+                message: "Campaign successfully",
+                data: campaign
+            })
+        } catch (error) {
+            next(error);
+        }
+    }
 }

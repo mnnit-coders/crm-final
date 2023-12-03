@@ -11,7 +11,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { logOut } from "../Utils/Requests/auth.requsts"
 
 
-  // Main component
+// Main component
 const Main = () => (
     <main className="main">
       <div className="sidebar-container">
